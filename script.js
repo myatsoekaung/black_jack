@@ -1,28 +1,38 @@
-let firstCard = 10
-let secondCard = 4
-let sum = firstCard + secondCard
-let hasBlackJack = false
-let isAlive = true
-let message = ""
-let messageEl = document.getElementById("message-el")
-let sumEl = document.getElementById("sum-el")
-let cardsEl = document.getElementById("cards-el")
+let firstCard = 10;
+let secondCard = 4;
+let cards = [firstCard, secondCard]; // array ordered list of items
+let sum = firstCard + secondCard;
+let hasBlackJack = false;
+let isAlive = true;
+let message = "";
+let messageEl = document.getElementById("message-el");
+let sumEl = document.getElementById("sum-el");
+let cardsEl = document.getElementById("cards-el");
 
 function startGame() {
-    cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
-    sumEl.textContent = "Sum: " + sum
+    renderGame();
+}
+
+function renderGame() {
+    // render out first and second card
+    cardsEl.textContent = "Cards: " + cards[0] + " " + cards[1];
+    sumEl.textContent = "Sum: " + sum;
     if (sum <= 20) {
-        message = "Do you want to draw a new card?"
+        message = "Do you want to draw a new card?";
     } else if (sum === 21) {
-        message = "You've got Blackjack!"
-        hasBlackJack = true
+        message = "You've got Blackjack!";
+        hasBlackJack = true;
     } else {
-        message = "You're out of the game!"
-        isAlive = false
+        message = "You're out of the game!";
+        isAlive = false;
     }
-    messageEl.textContent = message
+    messageEl.textContent = message;
 }
 
 function newCard() {
-    console.log("Drawing a new card from the deck!")
+    console.log("Drawing a new card from the deck!");
+
+    let newCard = 3;
+    sum += newCard;
+    renderGame();
 }
